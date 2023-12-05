@@ -42,17 +42,17 @@ class _MyAppState extends State<MyApp> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      width: 380,
-                      height: 500,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            color: const Color.fromRGBO(
-                                255, 214, 186, 1.0), // 테두리 색상 설정
-                            width: 5.0, // 테두리 선의 두께 설정
-                          ),
-                          borderRadius: BorderRadius.circular(20)),
-                    ),
+                    // Container(
+                    //   width: 380,
+                    //   height: 500,
+                    //   decoration: BoxDecoration(
+                    //       border: Border.all(
+                    //         color: const Color.fromRGBO(
+                    //             255, 214, 186, 1.0), // 테두리 색상 설정
+                    //         width: 5.0, // 테두리 선의 두께 설정
+                    //       ),
+                    //       borderRadius: BorderRadius.circular(20)),
+                    // ),
                     const SizedBox(height: 30),
                     UploadFile()
                   ],
