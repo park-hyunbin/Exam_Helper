@@ -85,25 +85,21 @@ class _QuestionListViewState extends State<QuestionListView> {
                       },
                     ),
                   if (questions[index]["QType"] == "SelectAnswer")
-                    DropdownButtonFormField(
-                      value: userAnswers[index + 1],
-                      items: (questions[index]["QOptions"]
+                    Column(
+                      children: (questions[index]["QOptions"]
                               as List<Map<String, dynamic>>)
                           .map((option) {
-                        return DropdownMenuItem(
+                        return RadioListTile(
+                          title: Text(option["OptionContent"]),
                           value: option["OptionNum"],
-                          child: Text(option["OptionContent"]),
+                          groupValue: userAnswers[index + 1],
+                          onChanged: (value) {
+                            setState(() {
+                              userAnswers[index + 1] = value;
+                            });
+                          },
                         );
                       }).toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          userAnswers[index + 1] = value;
-                        });
-                      },
-                      decoration: const InputDecoration(
-                        labelText: 'Select Answer',
-                        border: OutlineInputBorder(),
-                      ),
                     ),
                 ],
               ),
