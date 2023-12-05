@@ -36,6 +36,7 @@ dependencies:
   table_calendar: ^3.0.9
   docx_to_text: ^1.0.1
   file_picker: ^6.0.0
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
