@@ -59,18 +59,14 @@ class _UploadFileState extends State<UploadFile> {
         ),
       ),
       onTap: () async {
-        FilePickerResult? result = await FilePicker.platform.pickFiles(
-            type: FileType.any, allowMultiple: false
-        );
+        FilePickerResult? result = await FilePicker.platform
+            .pickFiles(type: FileType.any, allowMultiple: false);
         if (result != null && result.files.isNotEmpty) {
           File file = File(result.files.single.path!);
           userFile = file;
           _uploadFile(userFile);
-        } else {
-        }
+        } else {}
       },
     );
   }
 }
-
-
