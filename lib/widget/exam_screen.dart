@@ -22,7 +22,7 @@ class _ExamScreenState extends State<ExamScreen> {
     final String apiKey = GPTApiKey;
 
     // // GPT에게 요청할 프롬프트 구성
-    String prompt = '''아래 내용을 기반으로 시험 문제를 5개만 출제하여 json 구조로 줄바꿈 없이 돌려줘. 문제 유형에는 빈칸 채우기와 정답 고르기 유형이 있어. 수업 내용: ${widget.result}
+    String prompt = '''아래 내용을 기반으로 시험 문제를 10개만 출제하여 json 구조로 줄바꿈 없이 돌려줘. 문제 유형에는 빈칸 채우기와 정답 고르기 유형이 있어. 수업 내용: ${widget.result}
     json 구조: {"Topic": "시험 제목", "Question":[{"QNum": 문항 번호, "QType": "FillBlank", "QContent": 문제, "QAnswer": 정답}, {"QNum": 2, "QType": "SelectAnswer", "QContent": 문제, "QOptions":[{"OptionNum": 1, "OptionContent": 선택지 내용},{"OptionNum": 2,"OptionContent": 선택지 내용},{"OptionNum": 3, "OptionContent": 선택지 내용}, {"OptionNum": 4, "OptionContent": 선택지 내용}], "QAnswer": 정답 번호}]}
     ''';
 
