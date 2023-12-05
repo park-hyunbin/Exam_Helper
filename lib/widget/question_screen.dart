@@ -1,23 +1,22 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 
-class QuestionListView extends StatefulWidget {
-
-  const QuestionListView({Key? key}) : super(key: key);
+class DoQuestionListView extends StatefulWidget {
+  final String JsonString;
+  DoQuestionListView({required this.JsonString});
 
   @override
   _QuestionListViewState createState() => _QuestionListViewState();
 }
 
-class _QuestionListViewState extends State<QuestionListView> {
+class _QuestionListViewState extends State<DoQuestionListView> {
   late List<Map<String, dynamic>> questions = [];
-
   Map<int, dynamic> userAnswers = {};
 
   @override
   void initState() {
     super.initState();
-    loadQuestions(problem);
+    loadQuestions(widget.JsonString);
   }
 
   Future<void> loadQuestions(String jsonString) async {
@@ -30,41 +29,7 @@ class _QuestionListViewState extends State<QuestionListView> {
   }
 
   String problem = '''
-{
-  "Topic": "관계 대명사 문법 문제:",
-  "Question": [
-    {
-      "QNum": 1,
-      "QType": "FillBlank",
-      "QContent": "Fill in the blanks with the appropriate relative pronoun ('who', 'whose', 'that', 'which'): \\nThe girl ________ won the first prize in the art competition is my neighbor.",
-      "QAnswer": "who"
-    },
-    {
-      "QNum": 2,
-      "QType": "SelectAnswer",
-      "QContent": "Choose the appropriate relative pronoun ('who', 'whose', 'that', 'which'): \\nI know a scientist ________ research focuses on environmental sustainability.",
-      "QOptions": [
-        {
-          "OptionNum": 1,
-          "OptionContent": "who"
-        },
-        {
-          "OptionNum": 2,
-          "OptionContent": "whose"
-        },
-        {
-          "OptionNum": 3,
-          "OptionContent": "that"
-        },
-        {
-          "OptionNum": 4,
-          "OptionContent": "which"
-        }
-      ],
-      "QAnswer": 2
-    }
-  ]
-}
+{"Topic": "관계대명사 시험", "Question": [{"QNum": 1, "QType": "FillBlank", "QContent": "The person ___ is standing over there is my friend.", "QAnswer": "who"}, {"QNum": 2, "QType": "SelectAnswer", "QContent": "I met a woman ___ I had not seen in years.", "QOptions": [{"OptionNum": 1, "OptionContent": "where"}, {"OptionNum": 2, "OptionContent": "when"}, {"OptionNum": 3, "OptionContent": "whose"}, {"OptionNum": 4, "OptionContent": "that"}], "QAnswer": 3}, {"QNum": 3, "QType": "FillBlank", "QContent": "I bought a new car ___ is very fuel efficient.", "QAnswer": "which"}, {"QNum": 4, "QType": "FillBlank", "QContent": "This is the book ___ I was talking about.", "QAnswer": "that"}, {"QNum": 5, "QType": "SelectAnswer", "QContent": "The man ___ car was stolen reported it to the police.", "QOptions": [{"OptionNum": 1, "OptionContent": "who"}, {"OptionNum": 2, "OptionContent": "whose"}, {"OptionNum": 3, "OptionContent": "where"}, {"OptionNum": 4, "OptionContent": "why"}], "QAnswer": 2}]}
 ''';
 
   @override

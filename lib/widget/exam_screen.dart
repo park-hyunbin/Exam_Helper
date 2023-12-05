@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../api/api_key.dart';
 import 'dart:convert';
+import 'question_screen.dart';
+import 'dart:io';
 
 class ExamScreen extends StatefulWidget {
   final String result;
@@ -44,8 +46,13 @@ class _ExamScreenState extends State<ExamScreen> {
         var data = jsonDecode(utf8.decode(response.bodyBytes));
         setState(() {
           summaryResult = data['choices'][0]['text'];
-          print(summaryResult);
         });
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DoQuestionListView(JsonString: summaryResult),
+          ),
+        );
         // 응답이 실패한 경우에 대한 처리
         print('Failed to get response from GPT. Status code: ${response.statusCode}');
       }
@@ -62,26 +69,26 @@ class _ExamScreenState extends State<ExamScreen> {
         title: Text('Test Screen'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // sendToGPT 함수 실행
-                sendToGPT();
-              },
-              child: Text('시험 문제 불러오기'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              '$summaryResult',
-              style: TextStyle(fontSize: 18),
-            ),
-            // Add other widgets as needed
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () async {
+                  // sendToGPT 함수 실행
+                  sendToGPT();
+                  print(summaryResult);
+                },
+                child: Text('시험 문제 불러오기'),
+              ),
+              SizedBox(height: 20)
+              // Add other widgets as needed
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
