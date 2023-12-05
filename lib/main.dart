@@ -1,5 +1,6 @@
 import 'package:examhelper/detail.dart';
 import 'package:examhelper/widget/calendar.dart';
+import 'package:examhelper/widget/uploadFile.dart';
 import 'package:flutter/material.dart';
 import 'widget/bottom_bar.dart';
 
@@ -53,33 +54,7 @@ class _MyAppState extends State<MyApp> {
                           borderRadius: BorderRadius.circular(20)),
                     ),
                     const SizedBox(height: 30),
-                    GestureDetector(
-                      child: Container(
-                        width: 271,
-                        height: 45,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(50),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey, // 그림자의 색상
-                              offset: Offset(0, 2), // 그림자의 위치 (수평, 수직)
-                              blurRadius: 3, // 그림자의 블러 정도
-                              spreadRadius: 0, // 그림자 확장 정도
-                            ),
-                          ],
-                        ),
-                        child: const Center(
-                          child: Text(
-                            "업로드 해주세요",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    UploadFile()
                   ],
                 ),
               ),
