@@ -96,9 +96,7 @@ class _MyAppState extends State<MyApp> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DetailsPage(
-                              itemName: "소프트웨어공학 ${index + 1}",
-                            ),
+                            builder: (context) => const QuestionListView(),
                           ),
                         );
                       },
@@ -112,7 +110,7 @@ class _MyAppState extends State<MyApp> {
                         child: Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Text(
-                            "소프트웨어공학 ${index + 1}",
+                            "Exam ${index + 1}",
                             style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
