@@ -16,12 +16,10 @@ class _QuestionListViewState extends State<QuestionListView> {
   @override
   void initState() {
     super.initState();
-    loadQuestions();
+    loadQuestions(problem);
   }
 
-  Future<void> loadQuestions() async {
-    String jsonString = await DefaultAssetBundle.of(context)
-        .loadString('assets/json/problem.json');
+  Future<void> loadQuestions(String jsonString) async {
     Map<String, dynamic> jsonResult = jsonDecode(jsonString);
     List<Map<String, dynamic>> loadedQuestions =
         List<Map<String, dynamic>>.from(jsonResult['Question'] ?? []);
@@ -29,6 +27,44 @@ class _QuestionListViewState extends State<QuestionListView> {
       questions = loadedQuestions;
     });
   }
+
+  String problem = '''
+{
+  "Topic": "관계 대명사 문법 문제:",
+  "Question": [
+    {
+      "QNum": 1,
+      "QType": "FillBlank",
+      "QContent": "Fill in the blanks with the appropriate relative pronoun ('who', 'whose', 'that', 'which'): \\nThe girl ________ won the first prize in the art competition is my neighbor.",
+      "QAnswer": "who"
+    },
+    {
+      "QNum": 2,
+      "QType": "SelectAnswer",
+      "QContent": "Choose the appropriate relative pronoun ('who', 'whose', 'that', 'which'): \\nI know a scientist ________ research focuses on environmental sustainability.",
+      "QOptions": [
+        {
+          "OptionNum": 1,
+          "OptionContent": "who"
+        },
+        {
+          "OptionNum": 2,
+          "OptionContent": "whose"
+        },
+        {
+          "OptionNum": 3,
+          "OptionContent": "that"
+        },
+        {
+          "OptionNum": 4,
+          "OptionContent": "which"
+        }
+      ],
+      "QAnswer": 2
+    }
+  ]
+}
+''';
 
   @override
   Widget build(BuildContext context) {
