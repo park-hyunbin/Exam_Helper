@@ -14,6 +14,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final List<String> examTitles = [
+    "실용영문법 기말고사 대비",
+    "소프트웨어공학 기말고사 대비",
+    "QUIZ 대비",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,7 +45,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               Container(
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Container(
@@ -53,21 +59,20 @@ class _MyAppState extends State<MyApp> {
                     //       ),
                     //       borderRadius: BorderRadius.circular(20)),
                     // ),
-                    const SizedBox(height: 30),
+                    SizedBox(height: 30),
                     UploadFile()
                   ],
                 ),
               ),
               ListView.builder(
                 key: const PageStorageKey("LIST_VIEW"),
-                itemCount: 5,
+                itemCount: examTitles.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 30.0, horizontal: 20.0),
                     child: GestureDetector(
                       onTap: () {
-                        // Navigate to the details page when the item is clicked
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -85,7 +90,7 @@ class _MyAppState extends State<MyApp> {
                         child: Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Text(
-                            "Exam ${index + 1}",
+                            ('${examTitles[index]}\n맞은 개수 : 7/10'),
                             style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
